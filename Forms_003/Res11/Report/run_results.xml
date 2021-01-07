@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Step">
+<Data>
+    <Name>Error in library file.</Name>
+    <ErrorText>Error in library file.</ErrorText>
+    <Description>&lt;BR/&gt;File: D:\UFT\Functionlibs\FormsFunctions.qfl&lt;BR/&gt;line (36): &amp;quot;	chrome://settings/clearBrowserData&amp;quot;.&lt;BR/&gt;Description: Expected statement</Description>
+    <StartTime>2020-12-18 13:36:31</StartTime>
+    <Result>Failed</Result>
+    <Extension>
+      <IconKey>fb79ef0d56724bf2ab868d45a19dc074</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <MergeIsErrorIcon>True</MergeIsErrorIcon>
+    </Extension>
+    <Snapshot reference="Resources\Snapshots\9267308d-e309-43da-b7a7-ba2e45ef8f12.jpeg" />
+    <DeviceInfo />
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>Run Error</Name>
+    <Description>General run error.</Description>
+    <StartTime>2020-12-18 13:36:34</StartTime>
+    <Result>Failed</Result>
+    <Extension>
+      <IconKey>9bcc6d482f064e249d0710a0a30212f9</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Snapshot reference="Resources\Snapshots\53d6df50-debf-40ca-b36f-34044dbbca3b.jpeg" />
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Forms_003</Name>
+    <ToolName>Micro Focus Unified Functional Testing</ToolName>
+    <ToolVersion>0</ToolVersion>
+    <ToolVersionStringLiteral>15.0.2</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2020-12-18 13:36:29</StartTime>
+    <Duration>5</Duration>
+    <Result>Failed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>a30dcf1bfe744c3b933b05b029985ed3</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>-07:00:00</Timezone>
+      <Locale>English (United States)</Locale>
+      <User>Justin</User>
+      <CpuInfo>Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz</CpuInfo>
+      <NumberOfCores>12</NumberOfCores>
+      <TotalMemory>32636</TotalMemory>
+      <HostName>DESKTOP-MCR2EQO</HostName>
+      <OSInfo>Windows 10</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>Res11</ResultName>
+    <RunStartTime>2020-12-18 13:36:29</RunStartTime>
+    <Timezone>-07:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus Unified Functional Testing</OrchestrationToolName>
+    <OrchestrationToolVersion>0</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>15.0.2</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>

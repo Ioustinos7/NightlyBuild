@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<Results version="1.0">
+<ReportNode type="testrun">
+<ReportNode type="Action">
+<ReportNode type="Step">
+<Data>
+    <Name>SystemUtil.Run "chrome.exe -incognito  -URLhttps://stagingnormal.recallmax.com/rsm/request/secure/marketDental/formDownloadPdf.pdf?formId=Pde65rMr1y6E4swouFa3Iqa3Lr_Mhdg6Vzx&amp;view=1",1</Name>
+    <StartTime>2020-12-18 13:26:10</StartTime>
+    <Result>Done</Result>
+    <Extension>
+      <IconKey>64eb053a392642a5a489e2608ce67abf</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <DeviceInfo />
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>Invalid procedure call or argument</Name>
+    <ErrorText>Invalid procedure call or argument</ErrorText>
+    <Description>&lt;BR/&gt;Function file: D:\UFT\Functionlibs\FormsFunctions.qfl&lt;BR/&gt;Line (32): &amp;quot;		SystemUtil.Run &amp;quot;chrome.exe -incognito  -URL&amp;quot;&amp;amp;URL&amp;quot;.</Description>
+    <StartTime>2020-12-18 13:26:10</StartTime>
+    <Result>Failed</Result>
+    <Extension>
+      <StackTrace>
+        <StackFrame>
+          <ModuleName><![CDATA[FuncLibExecutableUnitName]]></ModuleName>
+          <FileName><![CDATA[D:\UFT\Functionlibs\FormsFunctions.qfl]]></FileName>
+          <Language><![CDATA[VBScript - script block]]></Language>
+          <FunctionName><![CDATA[gettoURL]]></FunctionName>
+          <Scripts><![CDATA[SystemUtil.Run "chrome.exe -incognito  -URL"&URL]]></Scripts>
+          <LineNo><![CDATA[32]]></LineNo>
+        </StackFrame>
+        <StackFrame>
+          <ModuleName><![CDATA[Action1]]></ModuleName>
+          <FileName><![CDATA[Action1]]></FileName>
+          <Language><![CDATA[VBScript global code]]></Language>
+          <FunctionName><![CDATA[VBScript global code]]></FunctionName>
+          <Scripts><![CDATA[gettoURL]]></Scripts>
+          <LineNo><![CDATA[31]]></LineNo>
+        </StackFrame>
+      </StackTrace>
+      <IconKey>192a82893972414a9a2d29893ec544a6</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+      <MergeIsErrorIcon>True</MergeIsErrorIcon>
+    </Extension>
+    <Snapshot reference="Resources\Snapshots\7a991e1f-a66b-4aa7-b484-d66984b734fb.jpeg" />
+    <DeviceInfo />
+  </Data>
+</ReportNode>
+<ReportNode type="Step">
+<Data>
+    <Name>Stop Run</Name>
+    <Description>Run stopped by user.</Description>
+    <StartTime>2020-12-18 13:26:16</StartTime>
+    <Result>Information</Result>
+    <Extension>
+      <IconKey>b50c77d3f4814bda9cef61234cea26ea</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Action1</Name>
+    <Description />
+    <StartTime>2020-12-18 13:26:09</StartTime>
+    <Duration>7</Duration>
+    <Result>Failed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>011fe0be1bfb4f5c9c5dbf1f9070f4f4</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+  </Data>
+</ReportNode>
+<Data>
+    <Name>Forms_003</Name>
+    <ToolName>Micro Focus Unified Functional Testing</ToolName>
+    <ToolVersion>0</ToolVersion>
+    <ToolVersionStringLiteral>15.0.2</ToolVersionStringLiteral>
+    <Description />
+    <StartTime>2020-12-18 13:26:08</StartTime>
+    <Duration>8</Duration>
+    <Result>Failed</Result>
+    <InputParameters />
+    <Extension>
+      <IconKey>42451b48796f4cc8879d9d0d525a5c87</IconKey>
+      <IsPlainTextNodeName>True</IsPlainTextNodeName>
+    </Extension>
+    <Environment>
+      <Timezone>-07:00:00</Timezone>
+      <Locale>English (United States)</Locale>
+      <User>Justin</User>
+      <CpuInfo>Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz</CpuInfo>
+      <NumberOfCores>12</NumberOfCores>
+      <TotalMemory>32636</TotalMemory>
+      <HostName>DESKTOP-MCR2EQO</HostName>
+      <OSInfo>Windows 10</OSInfo>
+    </Environment>
+    <TestedApplications />
+    <Links>
+      <Link type="DataTable" reference="Default.xlsx" displayname="Default Data Table" />
+    </Links>
+  </Data>
+</ReportNode>
+<GeneralInfo>
+    <ResultName>Res9</ResultName>
+    <RunStartTime>2020-12-18 13:26:08</RunStartTime>
+    <Timezone>-07:00:00</Timezone>
+    <OrchestrationToolName>Micro Focus Unified Functional Testing</OrchestrationToolName>
+    <OrchestrationToolVersion>0</OrchestrationToolVersion>
+    <OrchestrationToolVersionStringLiteral>15.0.2</OrchestrationToolVersionStringLiteral>
+  </GeneralInfo>
+</Results>
