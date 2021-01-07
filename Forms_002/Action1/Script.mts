@@ -67,14 +67,14 @@
 	Browser("Patient Form").Page("Patient Messages").WebButton("Edit Wording").Click @@ script infofile_;_ZIP::ssf5.xml_;_
 	
 'Make sure nothing custom has been added
-	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount").Check CheckPoint("characterCount") @@ script infofile_;_ZIP::ssf6.xml_;_
+	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_3").Check CheckPoint("characterCount_3")
 	
 'Copy the string of text that's exactly as long as I want it to be 
 	Browser("Patient Form").Page("Message Wording - Reminder").WebEdit("WebEdit").Set strmsgtext @@ script infofile_;_ZIP::ssf9.xml_;_
-	
+	 @@ script infofile_;_ZIP::ssf29.xml_;_
 'Make sure I have exactly 49 characters remaining
-	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_2").WaitProperty "visible", true, 3000
-	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_2").Check CheckPoint("characterCount_2") @@ script infofile_;_ZIP::ssf11.xml_;_
+	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_4").WaitProperty "visible", true, 3000
+	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_4").Check CheckPoint("characterCount_4") @@ script infofile_;_ZIP::ssf11.xml_;_
 	
 'Save it up
 	Browser("Patient Form").Page("Message Wording - Reminder").WebButton("Save").Click
