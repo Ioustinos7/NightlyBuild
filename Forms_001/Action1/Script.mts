@@ -81,7 +81,7 @@ Browser("Patient Form").Page("Patient Form").WebElement("UsedInMessagesYES").Wai
 WEnd 
 
 'See that it changed back to 'no' - For now I'm just going to grab a screenshot, but I'll re-do this once I think of a way to do what I want
-Browser("Patient Form").Page("Patient Form").WebTable("Form Name").CaptureBitmap "EverythingShouldBeNo.png"
+'Browser("Patient Form").Page("Patient Form").WebTable("Form Name").CaptureBitmap "EverythingShouldBeNo.png"
 
 
 'Check the 'add/edit forms' link to see that it takes you to your account
