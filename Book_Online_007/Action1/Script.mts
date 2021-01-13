@@ -2,7 +2,7 @@
 '!!!!Ok, this one works but there is hard-coded waits in here. I'm trying to wait based off of the image and colour changing, can't find a good way of handling this at the moment
 
 'Get to the dashboard
-Call adminlogin("AutomatedTestAdmin", "Carbanktire7410")
+Call adminlogin("AutomatedTestAdmin", "Welcome55!")
 Browser("RecallMax™ Login").Page("Key Indicators").Link("Logout").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf55.xml_;_
 
 'Head to the book online page

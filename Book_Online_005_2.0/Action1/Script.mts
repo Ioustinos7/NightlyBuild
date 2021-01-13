@@ -2,7 +2,7 @@
 
 'Hit the dashboard and login
 
-Call adminlogin("AutomatedTestAdmin", "Carbanktire7410")
+Call adminlogin("AutomatedTestAdmin", "Welcome55!")
 
 'head to the book online page
 Browser("RecallMax™ Login").Page("Key Indicators").Link("Book Online").Click @@ script infofile_;_ZIP::ssf1.xml_;_

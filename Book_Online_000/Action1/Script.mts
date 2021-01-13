@@ -9,7 +9,7 @@
 'make sure we're logged in
 'Browser("RecallMax™ Login").Page("Key Indicators").WebElement("Welcome AutomatedTestAdmin").Check CheckPoint("Welcome AutomatedTestAdmin") @@ script infofile_;_ZIP::ssf4.xml_;_
 '''''This function will login and verify, it does the same thing as the code above'''''
-Call adminlogin("AutomatedTestAdmin", "Carbanktire7410")
+Call adminlogin("AutomatedTestAdmin", "Welcome55!")
 'get to the book online page
 Browser("RecallMax™ Login").Page("Key Indicators").Link("Book Online").Click @@ script infofile_;_ZIP::ssf5.xml_;_
 'make sure it loads + check that we're logged in

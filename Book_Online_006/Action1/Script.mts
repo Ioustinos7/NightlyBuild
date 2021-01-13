@@ -1,7 +1,7 @@
 ﻿'This test is just to verify that you can add a new provider, treatment, and add them to the schedule. Also ensuring you cannot delete a provider if they've got time assigned in the schedule
 
 'Head to the dashboard + login
-Call adminlogin("AutomatedTestAdmin", "Carbanktire7410")
+Call adminlogin("AutomatedTestAdmin", "Welcome55!")
 
 'Head to the book online page
 Browser("RecallMax™ Login").Page("Key Indicators").Link("Book Online").Click @@ script infofile_;_ZIP::ssf6.xml_;_
