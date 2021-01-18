@@ -57,7 +57,8 @@
 	Call formlogin(strUserName,strPass)
 
 'Check that you were able to access the form and that it started downloading
-	Browser("formDownloadPdf.pdf").TextObject("Downloading the completed").WaitProperty "visible", true, 3000
+	Browser("formDownloadPdf.pdf").Page("Download Completed Form").WebElement("Downloading the completed").WaitProperty "visible", true, 3000
+	Browser("formDownloadPdf.pdf").Page("Download Completed Form").WebElement("Downloading the completed").Check CheckPoint("Downloading the completed form")
 
 'Delete all our cookies, as this can cause issues	
 	Call clearcookies()

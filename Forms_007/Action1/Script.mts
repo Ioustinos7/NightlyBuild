@@ -42,21 +42,22 @@
 
 'Make sure	that it's been set to an empty string
 	Browser("Patient Form").Page("Patient Form").WebEdit("marketDentalKey1").WaitProperty "value", "", 3000 @@ script infofile_;_ZIP::ssf14.xml_;_
-	Browser("Patient Form").Page("Patient Form").WebEdit("marketDentalKey1").Check CheckPoint("marketDentalKey") @@ script infofile_;_ZIP::ssf15.xml_;_
+	Browser("Patient Form").Page("Patient Form_2").WebEdit("marketDentalKey").Check CheckPoint("marketDentalKey_3")
+
 	
-'Logout
-	Call exitforms()
+'Close all the tabs, UFT gets confused very easily if there's 2 of the same tabs open
+	Browser("CreationTime:=0").CloseAllTabs()
  
 'Login as pr admin, see that it's not integrated, and click the link to 'sign-up'
 	Call pradminlogin(strUserName, strPass)
 	Call gettopatientforms()
-
-Browser("Patient Form").Page("Patient Form").Link("Click here to create a").Click @@ script infofile_;_ZIP::ssf16.xml_;_
+	Browser("Patient Form").Page("Patient Form").Link("Click here to create a").Click @@ script infofile_;_ZIP::ssf16.xml_;_
 
 'Ensure the market dental site comes up
-	Browser("SignForms - Client Admin").Page("RecallMax ™ - Dental Marketing").WebElement("logo").WaitProperty "visible", true, 3000
-	Browser("MarketDental").Page("MarketDental").WebElement("Connect SignForms to your Dental Software in 2 minutes").Check CheckPoint("Connect SignForms to your Dental Software in 2 minutes")
+	Browser("SignForms - Client Admin").Page("RecallMax ™ - Dental Marketing").WebElement("logo").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf36.xml_;_
+	Browser("SignForms - Client Admin").Page("RecallMax ™ - Dental Marketing").WebElement("Connect SignForms to your").Check CheckPoint("Connect SignForms to your Dental Software in 2 minutes_2") @@ script infofile_;_ZIP::ssf37.xml_;_
 	Browser("SignForms - Client Admin").Page("RecallMax ™ - Dental Marketing").Sync
+ @@ hightlight id_;_66632_;_script infofile_;_ZIP::ssf48.xml_;_
 	
 'Close all of the open tabs
 	Browser("CreationTime:=0").CloseAllTabs()
@@ -71,8 +72,8 @@ Browser("Patient Form").Page("Patient Form").Link("Click here to create a").Clic
 	Else
 		Call EndTest (strEvent, strReason, strDescription)		
 	End If
-	Browser("Patient Form").Page("Patient Form").WebEdit("marketDentalKey1").WaitProperty "value", strKey, 10000 @@ script infofile_;_ZIP::ssf26.xml_;_
-	Browser("Patient Form").Page("Patient Form").WebEdit("marketDentalKey1").Check CheckPoint("marketDentalKey_2") @@ script infofile_;_ZIP::ssf27.xml_;_
+	Browser("Patient Form").Page("Patient Form").WebEdit("marketDentalKey1").WaitProperty "value", strKey, 3000 @@ script infofile_;_ZIP::ssf26.xml_;_
+	Browser("Patient Form").Page("Patient Form_2").WebEdit("marketDentalKey").Check CheckPoint("marketDentalKey_3") @@ script infofile_;_ZIP::ssf27.xml_;_
 	
 'Logout
 	Call exitforms()
@@ -89,14 +90,13 @@ Browser("Patient Form").Page("Patient Form").Link("Click here to create a").Clic
 	'Browser("Patient Form").Page("Patient Form").Link("Form").Click
 	Browser("Patient Form").Page("Patient Form").Image("ViewForm").Click @@ script infofile_;_ZIP::ssf30.xml_;_
 	Browser("MarketDental").Page("SignForms").Link("SignForms").WaitProperty "visible", true, 3000
-	Browser("MarketDental").Page("SignForms").Link("SignForms").Check CheckPoint("SignForms")
-	Browser("SignForms - Client Admin").Page("Adult Sleep & Breathing").Sync
-	Browser("SignForms - Client Admin").Close @@ hightlight id_;_3211354_;_script infofile_;_ZIP::ssf33.xml_;_
+	Browser("MarketDental").Page("SignForms").Link("SignForms").Check CheckPoint("SignForms") @@ hightlight id_;_3211354_;_script infofile_;_ZIP::ssf33.xml_;_
 
 'Logout and close tabs
-	Call exitforms()
+	'Call exitforms()
 	 	
 'Close all the tabs
+	Call clearcookies()
 	Browser("CreationTime:=0").CloseAllTabs()
 	
  'This ends the if statement which runs based on what's in 'execute' in the test data file

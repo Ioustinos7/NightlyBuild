@@ -38,7 +38,7 @@
 	
 'Check that we were not able to access the form
 	Browser("Forms Browser").Page("Forms Page").WebElement("Error").WaitProperty "visible", true, 3000
-	Browser("Forms Browser").Page("https://stagingnormal.recallma").WebElement("There was a problem processing").Check CheckPoint("Error") @@ script infofile_;_ZIP::ssf5.xml_;_
+	Browser("Forms Browser").Page("https://stagingnormal.recallma").WebElement("There was a problem processing").Check CheckPoint("There was a problem") @@ script infofile_;_ZIP::ssf10.xml_;_
 	
 'Clear cookies and close the browser
 	 Call clearcookies()
@@ -55,7 +55,7 @@
 	
 'Check that we are not able to access the form
 	Browser("Forms Browser").Page("Forms Page").WebElement("Error").WaitProperty "visible", true, 3000
-	Browser("Forms Browser").Page("https://stagingnormal.recallma").WebElement("There was a problem processing").Check CheckPoint("Error")	
+	Browser("Forms Browser").Page("https://stagingnormal.recallma").WebElement("There was a problem processing").Check CheckPoint("There was a problem")	
 	
 'Clear the cookies and close all tabs
 	 Call clearcookies()
