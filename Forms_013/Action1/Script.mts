@@ -2,7 +2,8 @@
 'This is checking that after you've completed a form, and the practice has selected 'E-mail me a copy' that they do receive the E-mail message.
 
 'Declare the variables
-	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strURL, strFormName, strDashURL, strRMadmin, strRMpwd, strAdminURL, strPatName
+	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strURL, strFormName, strDashURL, strRMadmin, strRMpwd, strAdminURL, strPatName, strACCT
+	Dim strAccName, strPrName, strPatFName, strPatLName
 	
 'Import the test data
 	Datatable.ImportSheet "D:\!UFT Scripts\TestData\FormsData\Forms.xlsx","Forms_013","Global"
@@ -24,11 +25,50 @@
        strRMpwd = Trim(Datatable.Value("RMpwd","Global"))
        strAdminURL = Trim(Datatable.Value("AdminURL","Global"))
        strPatName = Trim(Datatable.Value("PatName","Global"))
+       strACCT  = Trim(Datatable.Value("AcctID","Global"))
+       strAccName  = Trim(Datatable.Value("AccName","Global"))
+       strPrName  = Trim(Datatable.Value("PrName","Global"))
+       strPatFName  = Trim(Datatable.Value("PatFName","Global"))
+       strPatLName  = Trim(Datatable.Value("PatLName","Global"))
        
 'Execute based on what test data is setup
 	If ucase(strExecute) = "Y" Then
 
 '===================================================================================================================================================
+
+'Before continuing I need to login as an RM admin, and enable messaging if it's not already turned on -- this test has kinda turned into a monster
+	Call  RMsettingslogin(strRMadmin, strRMpwd)
+	Browser("Patient Message Settings").Page("Account Search").WebEdit("companyId").Set strACCT @@ script infofile_;_ZIP::ssf67.xml_;_
+	Browser("Patient Message Settings").Page("Account Search").WebButton("Search").Click @@ script infofile_;_ZIP::ssf68.xml_;_
+	Browser("Patient Message Settings").Page("Account Search").Link("Account Name").Click	
+	Browser("Patient Message Settings").Page("Account Information_2").Link("Settings").Click @@ script infofile_;_ZIP::ssf133.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").WebButton("General Settings").Click @@ script infofile_;_ZIP::ssf134.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").WebCheckBox("patientTextByDefault").WaitProperty "visible", true, 3000
+	Browser("Patient Message Settings").Page("Account Information_2").WebCheckBox("patientTextByDefault").Set "ON" @@ script infofile_;_ZIP::ssf135.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").WebCheckBox("patientEmailByDefault").Set "ON" @@ script infofile_;_ZIP::ssf136.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").WebButton("Save").Click @@ script infofile_;_ZIP::ssf137.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").WebElement("Success").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf138.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").WebElement("Success").Check CheckPoint("Success_4") @@ script infofile_;_ZIP::ssf139.xml_;_
+	Browser("Patient Message Settings").Page("Account Information_2").Link("Practices").Click @@ script infofile_;_ZIP::ssf140.xml_;_
+	Browser("Patient Message Settings").Page("Account Information").Link("Practice").Click @@ script infofile_;_ZIP::ssf141.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").Link("Settings").Click @@ script infofile_;_ZIP::ssf142.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebButton("General Settings").Click @@ script infofile_;_ZIP::ssf143.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebCheckBox("allowClientResumeMessagingCd").WaitProperty "visible", true, 3000
+	Browser("Patient Message Settings").Page("Practice Information_2").WebCheckBox("allowClientResumeMessagingCd").Set "ON" @@ script infofile_;_ZIP::ssf144.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebCheckBox("activateEmail").Set "ON" @@ script infofile_;_ZIP::ssf145.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebCheckBox("activateSms").Set "ON" @@ script infofile_;_ZIP::ssf146.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebCheckBox("smsChat").Set "ON" @@ script infofile_;_ZIP::ssf147.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebButton("Save").Click @@ script infofile_;_ZIP::ssf148.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information_2").WebElement("Success").WaitProperty "visible", true, 3000
+	Browser("Patient Message Settings").Page("Practice Information_2").WebElement("Success").Check CheckPoint("Success_5") @@ script infofile_;_ZIP::ssf73.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information").WebButton("List Settings").Click @@ script infofile_;_ZIP::ssf74.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information").WebList("stateSettingMap[45].selectedDe").Select "0 min" @@ script infofile_;_ZIP::ssf75.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information").WebCheckBox("stateSettingMap[45].email").Set "ON" @@ script infofile_;_ZIP::ssf76.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information").WebCheckBox("stateSettingMap[45].sms").Set "ON" @@ script infofile_;_ZIP::ssf77.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information").WebButton("Save").Click @@ script infofile_;_ZIP::ssf78.xml_;_
+	Browser("Patient Message Settings").Page("Practice Information").WebElement("Success").WaitProperty "visible", true, 3000	
+	Browser("Patient Message Settings").Page("Practice Information").WebElement("Success").Check CheckPoint("Success_3")
+	Browser("Patient Message Settings").CloseAllTabs
 
 'Login to the dashboard as a practice administrator
 	Call pradminlogin(strUserName, strPass)
@@ -85,7 +125,7 @@
        End If
 
 'Set the E-mail to the Gmail account so the message can be found later
-	Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").Set ""
+	'Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").Set ""
 	Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").Set "testerdude404@gmail.com" @@ script infofile_;_ZIP::ssf112.xml_;_
 	Browser("Patient Message Settings").Page("Patient Form").WebButton("Save").Click
 	wait 1
@@ -111,31 +151,14 @@
 	Browser("Patient Message Settings").Page("Patient Form").WebElement("yui-gen29").Check CheckPoint("YES")
 	Browser("Patient Message Settings").CloseAllTabs
 	
-'Before continuing I need to login as an RM admin, and enable new patient messages, and set it to 1 minutes to try to speed this up
-	Call  RMsettingslogin(strRMadmin, strRMpwd)
-	Browser("Patient Message Settings").Page("Account Search").WebEdit("companyId").Set "100263" @@ script infofile_;_ZIP::ssf67.xml_;_
-	Browser("Patient Message Settings").Page("Account Search").WebButton("Search").Click @@ script infofile_;_ZIP::ssf68.xml_;_
-	Browser("Patient Message Settings").Page("Account Search").Link("Dev Forms/NP Testing 12-17").Click	
-	Browser("Patient Message Settings").Page("Account Information").Link("Practices").Click @@ script infofile_;_ZIP::ssf71.xml_;_
-	Browser("Patient Message Settings").Page("Account Information").Link("Jerry's Mobile Dentistry").Click @@ script infofile_;_ZIP::ssf72.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").Link("Settings").Click @@ script infofile_;_ZIP::ssf73.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").WebButton("List Settings").Click @@ script infofile_;_ZIP::ssf74.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").WebList("stateSettingMap[45].selectedDe").Select "0 min" @@ script infofile_;_ZIP::ssf75.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").WebCheckBox("stateSettingMap[45].email").Set "ON" @@ script infofile_;_ZIP::ssf76.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").WebCheckBox("stateSettingMap[45].sms").Set "ON" @@ script infofile_;_ZIP::ssf77.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").WebButton("Save").Click @@ script infofile_;_ZIP::ssf78.xml_;_
-	Browser("Patient Message Settings").Page("Practice Information").WebElement("Success").WaitProperty "visible", true, 3000	
-	Browser("Patient Message Settings").Page("Practice Information").WebElement("Success").Check CheckPoint("Success_3") @@ script infofile_;_ZIP::ssf80.xml_;_
-	Browser("Patient Message Settings").CloseAllTabs
-	
 'At this point a new appt needs to be created	  @@ script infofile_;_ZIP::ssf81.xml_;_
 	Window("Dentrix Appointment Book").WinMenu("Menu").Select "File;Select Patient - New Appt...	Shift+F2"
 	Set WshShell = CreateObject("WScript.Shell")
 	WshShell.SendKeys "{TAB 7}"
 	wait 1
 	WshShell.SendKeys "{ENTER}" @@ hightlight id_;_1641400_;_script infofile_;_ZIP::ssf17.xml_;_
-	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinEdit("Last").Set "Smith" @@ hightlight id_;_1772458_;_script infofile_;_ZIP::ssf18.xml_;_
-	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinEdit("First").Set "Browning" @@ hightlight id_;_6883878_;_script infofile_;_ZIP::ssf20.xml_;_
+	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinEdit("Last").Set strPatLName @@ hightlight id_;_1772458_;_script infofile_;_ZIP::ssf18.xml_;_
+	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinEdit("First").Set strPatFName @@ hightlight id_;_6883878_;_script infofile_;_ZIP::ssf20.xml_;_
 	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinEdit("Email:").Set "testerdude404@gmail.com" @@ hightlight id_;_1379230_;_script infofile_;_ZIP::ssf21.xml_;_
 	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinEdit("Mobile #:").Set "8257127753" @@ hightlight id_;_4589684_;_script infofile_;_ZIP::ssf22.xml_;_
 	Window("Dentrix Appointment Book").Dialog("Enter New Patient Information").WinButton("OK").Click @@ hightlight id_;_1182616_;_script infofile_;_ZIP::ssf23.xml_;_
@@ -173,9 +196,9 @@
 
 'In order to speed this up, login as a RM admin and do a mini delta, wait 10s, then a process data
 	Call  RMsettingslogin(strRMadmin, strRMpwd)
-	Browser("Patient Message Settings").Page("Account Search").WebEdit("companyId").Set "100263"
+	Browser("Patient Message Settings").Page("Account Search").WebEdit("companyId").Set strACCT
 	Browser("Patient Message Settings").Page("Account Search").WebButton("Search").Click @@ script infofile_;_ZIP::ssf68.xml_;_
-	Browser("Patient Message Settings").Page("Account Search").Link("Dev Forms/NP Testing 12-17").Click
+	Browser("Patient Message Settings").Page("Account Search").Link("Account Name").Click
 	Browser("Patient Message Settings").Page("Account Information").Link("Support").Click @@ script infofile_;_ZIP::ssf47.xml_;_
 	Browser("Patient Message Settings").Page("Account Information").WebButton("Mini-Delta").Click @@ script infofile_;_ZIP::ssf48.xml_;_
 	wait 2
@@ -217,17 +240,15 @@
  		Browser("SignForms - Client Admin").Refresh  				
 		Browser("SignForms - Client Admin").Page("Inbox").Link("Form submitted").Click @@ script infofile_;_ZIP::ssf120.xml_;_
 		Browser("SignForms - Client Admin").Page("Inbox").Link("view the completed form").Click @@ script infofile_;_ZIP::ssf121.xml_;_
-		Browser("RecallMax™ Login").Page("RecallMax™ Login").WebEdit("username").Set "51771admin" @@ script infofile_;_ZIP::ssf122.xml_;_
-		Browser("RecallMax™ Login").Page("RecallMax™ Login").WebEdit("password").SetSecure "600713fa371dcb84702251dda752ea258ce618dd7ab8" @@ script infofile_;_ZIP::ssf123.xml_;_
+		Browser("RecallMax™ Login").Page("RecallMax™ Login").WebEdit("username").Set strUserName @@ script infofile_;_ZIP::ssf122.xml_;_
+		Browser("RecallMax™ Login").Page("RecallMax™ Login").WebEdit("password").SetSecure strPass @@ script infofile_;_ZIP::ssf123.xml_;_
 		Browser("RecallMax™ Login").Page("RecallMax™ Login").WebButton("Login").Click
 		Browser("FormsPage").Page("formDownloadPdf.pdf").WebElement("EMBED FORM").WaitProperty "visible", true, 3000		 
 		Browser("FormsPage").Page("formDownloadPdf.pdf").WebElement("EMBED FORM").Check CheckPoint("Form") @@ script infofile_;_ZIP::ssf126.xml_;_
 		
-'Logout
-	'Call exitforms()
-	
-'Close all the tabs
-	'Call closealltabs()
+'Clear cookies one last time and close it down
+		Call clearcookies()
+		Browser("FormsPage").CloseAllTabs
 	
  'This ends the if statement which runs based on what's in 'execute' in the test data file
  	End  If
