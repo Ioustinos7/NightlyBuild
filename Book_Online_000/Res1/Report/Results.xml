@@ -129,7 +129,7 @@
 ]
 >
 <Report ver="2.0" tmZone="Mountain Standard Time">
-<General productName="Micro Focus Unified Functional Testing" productVer="15.0.2" os="" host="DESKTOP-MCR2EQO"><DocLocation><![CDATA[C:\GitHub\NightlyBuild\Book_Online_000]]></DocLocation></General>
+<General productName="Micro Focus Unified Functional Testing" productVer="15.0.2" os="" host="DESKTOP-MCR2EQO"><DocLocation><![CDATA[D:\!UFT Scripts\Scripts\UpdatedBookOnline\Book_Online_000]]></DocLocation></General>
 <Doc rID="T1"   productName= "Micro Focus Unified Functional Testing"  >
 <DName><![CDATA[Book_Online_000]]></DName>
 <Res><![CDATA[Res1]]></Res>
@@ -141,17 +141,256 @@
 </BtmPane>
 </NodeArgs>
 </DT>
-<Step rID="T3">
-<Obj plainTxt="False" ><![CDATA[Stop Run]]></Obj>
-<Details plainTxt="False" ><![CDATA[Run stopped by user.]]></Details>
-<Time><![CDATA[1/13/2021 - 8:56:45]]></Time>
-<TimeTick>1610553405</TimeTick>
-<NodeArgs eType="General" icon="3" nRep="7" status="Information" >
-<Disp><![CDATA[Stop Run]]></Disp>
+<Action rID="T3">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:07]]></Time>
+<TimeTick>1611179347</TimeTick>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[Run "chrome.exe",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run "chrome.exe",1]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:07]]></Time>
+<TimeTick>1611179347</TimeTick>
+<NodeArgs eType="Replay" icon="4" nRep="10" status="Passed" >
+<Disp><![CDATA[Run "chrome.exe",1]]></Disp>
 </NodeArgs>
 </Step>
-<Summary sTime="1/13/2021 - 8:56:41" eTime="1/13/2021 - 8:56:45" passed="0" failed="0" warnings="0" stopped="True" ></Summary>
-<NodeArgs eType="StartTest" icon="1" nRep="3" >
+<NodeArgs eType="Replay" icon="4" nRep="9" status="Passed" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[RecallMax™ Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:10]]></Time>
+<TimeTick>1611179350</TimeTick>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[RecallMax™ Login]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:10]]></Time>
+<TimeTick>1611179350</TimeTick>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[username.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["visible", True, True, 3000]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:10]]></Time>
+<TimeTick>1611179350</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="15" >
+<Disp><![CDATA[username.WaitProperty]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[username.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["50173admin"]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:10]]></Time>
+<TimeTick>1611179350</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="18" >
+<Disp><![CDATA[username.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[password.SetSecure]]></Obj>
+<Details plainTxt="False" ><![CDATA["Welcome2"]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:10]]></Time>
+<TimeTick>1611179350</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="21" >
+<Disp><![CDATA[password.SetSecure]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj plainTxt="False" ><![CDATA[Login.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:10]]></Time>
+<TimeTick>1611179350</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="24" >
+<Disp><![CDATA[Login.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="14" >
+<Disp><![CDATA[RecallMax™ Login]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[Key Indicators]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:12]]></Time>
+<TimeTick>1611179352</TimeTick>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[Logout.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["visible", True, True, 3000]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:12]]></Time>
+<TimeTick>1611179352</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="28" >
+<Disp><![CDATA[Logout.WaitProperty]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj plainTxt="False" ><![CDATA[Logout]]></Obj>
+<Details plainTxt="False" ><![CDATA[Link]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:12]]></Time>
+<TimeTick>1611179352</TimeTick>
+<HtmlStep rID="T15">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "Logout": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 1/20/2021 - 14:49:12</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">Logout Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">html tag&nbsp;</TD>
+				<TD class="Text" Title="">A&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<TD class="Text" Title="">innertext&nbsp;</TD>
+				<TD class="Text" Title="&#248  Regular Expression">Logout&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><TR>
+				<TD class="Text" Title="">text&nbsp;</TD>
+				<TD class="Text" Title="&#248  Regular Expression">Logout&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1611179352</TimeTick>
+<NodeArgs eType="Verification" icon="9" nRep="31" status="Passed" >
+<Disp><![CDATA[Checkpoint "Logout"]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="9" nRep="30" status="Passed" >
+<Disp><![CDATA[Logout]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA[Book Online.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:12]]></Time>
+<TimeTick>1611179352</TimeTick>
+<NodeArgs eType="Replay" icon="9" nRep="34" >
+<Disp><![CDATA[Book Online.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="27" status="Passed" >
+<Disp><![CDATA[Key Indicators]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA[Book Online - Overview]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:14]]></Time>
+<TimeTick>1611179354</TimeTick>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[Welcome to RecallMax™.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["visible", True, True, 3000]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:14]]></Time>
+<TimeTick>1611179354</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="38" >
+<Disp><![CDATA[Welcome to RecallMax™.WaitProperty]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA[Welcome to RecallMax™]]></Obj>
+<Details plainTxt="False" ><![CDATA[WebElement]]></Details>
+<Time><![CDATA[1/20/2021 - 14:49:14]]></Time>
+<TimeTick>1611179354</TimeTick>
+<HtmlStep rID="T20">
+<HTML><![CDATA[<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+<base href=""/>
+<link rel="stylesheet" href="Results.css"/>
+</head>
+<body bgcolor="#ffffff" leftmargin="20" marginwidth="20" topmargin="10" marginheight="10" vlink="#9966cc">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr><td height="1" class="bg_midblue"></td></tr>
+	<tr><td height="30"><span class="hl1"> Standard Checkpoint "Welcome to RecallMax™ Online Booking.": </span><span class="PassedHigh">Passed</span></td></tr>
+	<tr><td height="2" class="bg_darkblue"></td></tr>
+	<tr><td height="10"></td></tr>
+	<tr><td><span class="text"><b>Date and Time:</b> 1/20/2021 - 14:49:14</span></td></tr>
+		
+	<tr><td height="15"></td></tr>
+</table>
+<!--Until here code from report media-->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id=TABLE2><tr height="1"><td height="1" class="bg_gray_ccc"></td></tr><tr><td height="5"></td></tr></table><table>
+	<tr><td height="30"><span class="hl2"> Details</span></td></tr><tr><td height="5"></td></tr>
+</table>
+<table border="0" cellpadding="3" cellspacing="1" width="100%" bgcolor="#666699">
+	<tr>
+		<td bgcolor="white">
+		<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr><td  class="hl3">Welcome to RecallMax™ Online Booking. Results&nbsp;</td></tr>
+<tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<td height=1 class="tablehl">Property Name&nbsp;&nbsp;</td>
+				<td height=1 class="tablehl">Property Value&nbsp;&nbsp;</td>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR><tr><th colspan=2 height=1 class="bg_darkblue"></th></tr>
+<TR>
+				<TD class="Text" Title="">innertext&nbsp;</TD>
+				<TD class="Text" Title="&#248  Regular Expression">Welcome to RecallMax™ Online Booking.&nbsp;</TD>
+</TR>
+			<TR><th colspan=2 height=1 class="bg_gray_eee"></th></TR>
+		</table>
+		</td>
+	</tr>
+</table>
+</body></html>]]></HTML>
+<TimeTick>1611179354</TimeTick>
+<NodeArgs eType="Verification" icon="10" nRep="41" status="Passed" >
+<Disp><![CDATA[Checkpoint "Welcome to RecallMax™ Online Booking."]]></Disp>
+</NodeArgs>
+</HtmlStep>
+<NodeArgs eType="Context" icon="10" nRep="40" status="Passed" >
+<Disp><![CDATA[Welcome to RecallMax™]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="37" status="Passed" >
+<Disp><![CDATA[Book Online - Overview]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="5" nRep="13" status="Passed" >
+<Disp><![CDATA[RecallMax™ Login]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="1/20/2021 - 14:49:07" eTime="1/20/2021 - 14:49:14" passed="3" failed="0" warnings="0" ></Summary>
+
+<ActionMaintenanceSummary Action="Action1" Objects="0" Updated="0" Added="0" LinesTotal="0" LinesUpdated="0">
+</ActionMaintenanceSummary><NodeArgs eType="StartAction" icon="3" nRep="6" status="Passed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="1/20/2021 - 14:49:06" eTime="1/20/2021 - 14:49:14" passed="3" failed="0" warnings="0" ></Summary>
+
+<TestMaintenanceSummary ObjectsAdded="0" ObjectsUpdated="0" StepsUpdated="0" StepsComments="0">
+</TestMaintenanceSummary><NodeArgs eType="StartTest" icon="1" nRep="3" status="Passed" >
 <Disp><![CDATA[Test Book_Online_000 Summary]]></Disp>
 </NodeArgs>
 </Doc>
