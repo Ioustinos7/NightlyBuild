@@ -227,6 +227,7 @@
 
 'Click next and ensure you can see times available, and that the 2 family members are being booked together
 	Browser("BookOnline").Page("BookingAssistant").WebButton("Next").Click
+	wait 1
 	Browser("BookOnline").Page("BookingAssistant").WebButton("Next").Click
 	Browser("BookOnline").Page("BookingAssistant").WebElement("Booking Assistant").WaitProperty "visible", true, 3000
 	Browser("BookOnline").Page("BookingAssistant").WebElement("2 family members").Check CheckPoint("2 family members")
