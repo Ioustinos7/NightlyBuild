@@ -1,8 +1,5 @@
 ﻿'This is just a real quick one to ensure you cannot use an invalid E-mail address and that you can't bypass the SMS length check
 
-'Import the environment settings
-	'Environment.LoadFromFile "D:\!UFT Scripts\TestData\ENVIRONMENT\Environment.xml" 
-	
 'Declare the variables
 	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strInvEmail, strmsgtext, strURL
 
@@ -43,17 +40,13 @@
 
 'Try to save it
 	 Browser("Patient Form").Page("Patient Form").WebButton("Save").Click
-
 	If Browser("Patient Form").Page("Patient Form").WebElement("Email address is invalid").exist(1) Then
-		'DataTable.Value("strchk1", dtGlobalSheet) = "We were not able to save an invalid E-mail address"
-		Print ("We were not able to save an invalid E-mail address") 
 		Browser("Patient Form").Page("Patient Form").WebButton("Cancel").Click
-	ELSEIf Browser("Patient Form").Page("Patient Form").WebElement("Email address is invalid").exist(0) Then
-		'DataTable.Value("strchk2", dtGlobalSheet) = "We were able to save an invalid E-mail address"
-		Print ("We were able to save an invalid E-mail address")
+	ELSE
+		Call EndTest (strEvent, strReason, strDescription)	
 	End If
-	
-	'Ok, let's try to get another negative case in here as this script is still tiny..we'll try to edit our messages so that we're less than 50 chars available, then try to save it
+
+'Ok, let's try to get another negative case in here as this script is still tiny..we'll try to edit our messages so that we're less than 50 chars available, then try to save it
 
 'Head to patient messages
 	Browser("Patient Form").Page("Message Wording - Reminder").Link("Patient Messages").Click
@@ -71,7 +64,7 @@
 	
 'Copy the string of text that's exactly as long as I want it to be 
 	Browser("Patient Form").Page("Message Wording - Reminder").WebEdit("WebEdit").Set strmsgtext @@ script infofile_;_ZIP::ssf9.xml_;_
-	 @@ script infofile_;_ZIP::ssf29.xml_;_
+ @@ script infofile_;_ZIP::ssf29.xml_;_
 'Make sure I have exactly 49 characters remaining
 	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_4").WaitProperty "visible", true, 3000
 	Browser("Patient Form").Page("Message Wording - Reminder").WebElement("characterCount_4").Check CheckPoint("characterCount_4") @@ script infofile_;_ZIP::ssf11.xml_;_
