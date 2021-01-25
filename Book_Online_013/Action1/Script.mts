@@ -3,7 +3,7 @@
 'Expected Result(s): System should display patients, with the ability for the user to edit and delete them 
 
 'Declare the variables
-	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strURL, strBOpage, strTreat, strpatfname, strpatlname, intpatnum,  strpatemail, strApptTime, strProvider
+	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strURL, strBOpage, strTreat, strpatfname, strpatlname, intpatnum,  strpatemail,  strProvider
 	Dim strpatfname2, strpatlname2
 'Import the test data
 	Datatable.ImportSheet "D:\!UFT Scripts\TestData\BookOnlineData_2.0\BookOnlineData_2.0.xlsx","Book_Online_013","Global"
@@ -25,7 +25,6 @@
 	strpatlname = Trim(Datatable.Value("Pat1Lname","Global"))
 	intpatnum = Trim(Datatable.Value("Pat1Num","Global"))
 	strpatemail = Trim(Datatable.Value("Pat1Email","Global"))
-	strApptTime = Trim(Datatable.Value("ApptTime","Global"))
 	strProvider = Trim(Datatable.Value("ProviderName","Global"))
 	strpatfname2 = Trim(Datatable.Value("Pat2Fname","Global"))
 	strpatlname2 = Trim(Datatable.Value("Pat2Lname","Global"))
