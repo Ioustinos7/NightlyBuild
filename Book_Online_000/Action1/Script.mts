@@ -43,9 +43,9 @@
 	
 'Head to provider time off
 	Browser("RecallMax™ Login").Page("Book Online - Practice").Link("Provider Time Off").Click @@ script infofile_;_ZIP::ssf20.xml_;_
-	Browser("RecallMax™ Login").Page("Book Online - Provider").WebButton("Add Provider Time Off").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf21.xml_;_
-	Browser("RecallMax™ Login").Page("Book Online - Provider").WebButton("Add Provider Time Off").Check CheckPoint("Add Provider Time Off") @@ script infofile_;_ZIP::ssf22.xml_;_
-	
+	Browser("RecallMax™ Login").Page("Book Online - Provider").WebElement("Provider Time Off").WaitProperty "visible", true, 3000
+	Browser("RecallMax™ Login").Page("Book Online - Provider_2").WebElement("Provider Time Off").Check CheckPoint("Provider Time Off") @@ script infofile_;_ZIP::ssf41.xml_;_
+		
 'Head to settings
 	Browser("RecallMax™ Login").Page("Book Online - Provider").Link("Settings").Click @@ script infofile_;_ZIP::ssf23.xml_;_
 	Browser("RecallMax™ Login").Page("Book Online - Settings").WebElement("settingsHeader").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf24.xml_;_
