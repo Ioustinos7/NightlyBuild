@@ -3,7 +3,7 @@
 'Expected Result 1) Appointment Reason must be available in the services provided by any of the Provider who is scheduled 
 
 'Declare the variables
-	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strURL, strBOpage, strTreat, strpatfname, strpatlname, intpatnum,  strpatemail, strApptTime, strProvider
+	Dim strUserName, strPass, intRowCount, intLoop, strExecute, strURL, strBOpage, strTreat, strpatfname, strpatlname, intpatnum,  strpatemail,  strProvider
 
 'Import the test data
 	Datatable.ImportSheet "D:\!UFT Scripts\TestData\BookOnlineData_2.0\BookOnlineData_2.0.xlsx","Book_Online_012","Global"
@@ -25,7 +25,6 @@
 	strpatlname = Trim(Datatable.Value("Pat1Lname","Global"))
 	intpatnum = Trim(Datatable.Value("Pat1Num","Global"))
 	strpatemail = Trim(Datatable.Value("Pat1Email","Global"))
-	strApptTime = Trim(Datatable.Value("ApptTime","Global"))
 	strProvider = Trim(Datatable.Value("ProviderName","Global"))
 	
 'Execute based on what test data is setup
@@ -91,10 +90,17 @@
 
 'Go to activate and enable it
 	Browser("RecallMax™ Login").Page("Book Online - Schedule_2").Link("Activate").Click @@ script infofile_;_ZIP::ssf55.xml_;_
-	Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Activate Online Booking").Click @@ script infofile_;_ZIP::ssf56.xml_;_
-	Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebCheckBox("bookOnlineOn").Set "ON" @@ script infofile_;_ZIP::ssf57.xml_;_
-	Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Success").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf58.xml_;_
-	Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Success").Check CheckPoint("Success")
+	actstatus = Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebCheckBox("bookOnlineOn").GetROProperty("value")
+	If actstatus = "on" Then
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebCheckBox("bookOnlineOn").Set "OFF"
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebCheckBox("bookOnlineOn").Set "ON"
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Success").WaitProperty "visible", true, 3000
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Success").Check CheckPoint("Success")
+	ELSE
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebCheckBox("bookOnlineOn").Set "ON"
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Success").WaitProperty "visible", true, 3000
+		Browser("RecallMax™ Login").Page("Book Online - Activate_2").WebElement("Success").Check CheckPoint("Success")		
+	End If	
 	
 'Logout and close tabs
 	Call BOLogout()
