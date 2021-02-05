@@ -126,12 +126,12 @@
 
 'Set the E-mail to the Gmail account so the message can be found later
 	'Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").Set ""
-	Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").Set "testerdude404@gmail.com" @@ script infofile_;_ZIP::ssf112.xml_;_
+	Browser("Patient Message Settings").Page("Patient Form").WebEdit("emailAddress").Set "testerdude404@gmail.com" @@ script infofile_;_ZIP::ssf112.xml_;_
 	Browser("Patient Message Settings").Page("Patient Form").WebButton("Save").Click
 	wait 1
 	Browser("Patient Message Settings").Page("Patient Form").Link("FormName").Click
-	Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").WaitProperty "value", "testerdude404@gmail.com", 3000 @@ script infofile_;_ZIP::ssf113.xml_;_
-	Browser("Patient Form").Page("Patient Form").WebEdit("PTformsemailAddress").Check CheckPoint("emailAddress") @@ script infofile_;_ZIP::ssf114.xml_;_
+	Browser("Patient Message Settings").Page("Patient Form").WebEdit("emailAddress").WaitProperty "value", "testerdude404@gmail.com", 3000 @@ script infofile_;_ZIP::ssf113.xml_;_
+	Browser("Patient Message Settings").Page("Patient Form").WebEdit("emailAddress").Check CheckPoint("emailAddress") @@ script infofile_;_ZIP::ssf114.xml_;_
 
 'enable everything
 	wait 1
@@ -151,7 +151,9 @@
 	Browser("Patient Message Settings").Page("Patient Form").WebElement("yui-gen29").Check CheckPoint("YES")
 	Browser("Patient Message Settings").CloseAllTabs
 	
-'At this point a new appt needs to be created	  @@ script infofile_;_ZIP::ssf81.xml_;_
+'At this point a new appt needs to be created @@ script infofile_;_ZIP::ssf81.xml_;_
+	SystemUtil.Run "Apptbook.exe", ""
+	wait 3
 	Window("Dentrix Appointment Book").WinMenu("Menu").Select "File;Select Patient - New Appt...	Shift+F2"
 	Set WshShell = CreateObject("WScript.Shell")
 	WshShell.SendKeys "{TAB 7}"
@@ -183,10 +185,10 @@
 	If Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Dialog("Appointment Book").WinButton("OK").Exist(1) Then
             Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Dialog("Appointment Book").WinButton("OK").Click
             Window("Dentrix Appointment Book").Dialog("Appointment Information_2").WinButton(">_3").Click @@ hightlight id_;_6818038_;_script infofile_;_ZIP::ssf128.xml_;_
-            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Window("Select Date Setup").Type  micRight  @@ hightlight id_;_133644_;_script infofile_;_ZIP::ssf129.xml_;_
-            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Window("Select Date Setup").Type  micReturn  @@ hightlight id_;_133644_;_script infofile_;_ZIP::ssf130.xml_;_
-            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").WinButton(">_3").Type  micTab  @@ hightlight id_;_6818038_;_script infofile_;_ZIP::ssf131.xml_;_
-            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").WinEdit("Staff:").Type  micReturn  @@ hightlight id_;_1837460_;_script infofile_;_ZIP::ssf132.xml_;_
+            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Window("Select Date Setup").Type  micRight @@ hightlight id_;_133644_;_script infofile_;_ZIP::ssf129.xml_;_
+            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Window("Select Date Setup").Type  micReturn @@ hightlight id_;_133644_;_script infofile_;_ZIP::ssf130.xml_;_
+            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").WinButton(">_3").Type  micTab @@ hightlight id_;_6818038_;_script infofile_;_ZIP::ssf131.xml_;_
+            Window("Dentrix Appointment Book").Dialog("Appointment Information_2").WinEdit("Staff:").Type  micReturn @@ hightlight id_;_1837460_;_script infofile_;_ZIP::ssf132.xml_;_
 	End If
 		
 	Window("Dentrix Appointment Book").Dialog("Appointment Information_2").Dialog("Appointment Book").WinButton("Yes").Click @@ hightlight id_;_198686_;_script infofile_;_ZIP::ssf44.xml_;_
@@ -210,10 +212,12 @@
 	Browser("Patient Message Settings").Page("Practice Information").WebButton("Logout").Click @@ script infofile_;_ZIP::ssf52.xml_;_
 	Browser("Patient Message Settings").CloseAllTabs
 
-
-'Check the Gmail account, and see if we've received the new patient welcome message
+'Let's try to clean up the browser before checking the E-mail
 	SystemUtil.Run "chrome.exe", ""
 	Call clearcookies()
+	Browser("SignForms - Client Admin").CloseAllTabs
+
+'Check the Gmail account, and see if we've received the new patient welcome message
 	SystemUtil.Run "chrome.exe", "https://gmail.com/"	
 	Browser("SignForms - Client Admin").Page("Gmail").WebEdit("Email or phone").Set "testerdude404"
 	Browser("SignForms - Client Admin").Page("Gmail").WebElement("WebElement").Click
@@ -222,18 +226,18 @@
 	Browser("SignForms - Client Admin").Page("Inbox").WebButton("Compose").WaitProperty "visible", true, 3000 
 	Browser("SignForms - Client Admin").Page("Inbox").WebButton("Compose").Check CheckPoint("Compose") @@ script infofile_;_ZIP::ssf99.xml_;_
 	
-	'Let's try finding and filling out that form
-		Browser("SignForms - Client Admin").Page("Inbox").Link("Welcome to Jerry's Mobile_2").Click @@ script infofile_;_ZIP::ssf100.xml_;_
-		Browser("SignForms - Client Admin").Page("Inbox").Link("click here").Click @@ script infofile_;_ZIP::ssf101.xml_;_
-		Browser("FormsPage").Page("TheForm").WebEdit("patient_email").Set "testerdude404@gmail.com"
-		Browser("FormsPage").Page("TheForm").WebEdit("patient_name").Set "John Doe"
-		Browser("FormsPage").Page("TheForm").WebElement("Signature").Click
-		Browser("FormsPage").Page("TheForm").WebEdit("Answer").Set "3"
-		Browser("FormsPage").Page("TheForm").WebButton("Send").Click
-		Browser("FormsPage").Page("TheForm").WebElement("Thank you! Your form was").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf115.xml_;_
-		Browser("FormsPage").Page("TheForm").WebElement("Thank you! Your form was").Check CheckPoint("Thank you! Your form was sent successfully! Go to my forms landing page by clicking Here_2") @@ script infofile_;_ZIP::ssf116.xml_;_
-		Browser("FormsPage").Page("TheForm").Sync
-		Browser("FormsPage").Close 
+'Let's try finding and filling out that form
+	Browser("SignForms - Client Admin").Page("Inbox").Link("Welcome to Jerry's Mobile_2").Click @@ script infofile_;_ZIP::ssf100.xml_;_
+	Browser("SignForms - Client Admin").Page("Inbox").Link("click here").Click @@ script infofile_;_ZIP::ssf101.xml_;_
+	Browser("FormsPage").Page("TheForm").WebEdit("patient_email").Set "testerdude404@gmail.com"
+	Browser("FormsPage").Page("TheForm").WebEdit("patient_name").Set "John Doe"
+	Browser("FormsPage").Page("TheForm").WebElement("Signature").Click
+	Browser("FormsPage").Page("TheForm").WebEdit("Answer").Set "3"
+	Browser("FormsPage").Page("TheForm").WebButton("Send").Click
+	Browser("FormsPage").Page("TheForm").WebElement("Thank you! Your form was").WaitProperty "visible", true, 3000 @@ script infofile_;_ZIP::ssf115.xml_;_
+	Browser("FormsPage").Page("TheForm").WebElement("Thank you! Your form was").Check CheckPoint("Thank you! Your form was sent successfully! Go to my forms landing page by clicking Here_2") @@ script infofile_;_ZIP::ssf116.xml_;_
+	Browser("FormsPage").Page("TheForm").Sync
+	Browser("FormsPage").Close 
 
 	'Need to refresh the inbox and we should have our completed form
  		wait 10
